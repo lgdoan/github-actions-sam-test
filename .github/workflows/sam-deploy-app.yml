@@ -8,6 +8,7 @@ jobs:
     deploy:
       name: deploy app
       runs-on: ubuntu-latest
+      environment: .aws-config
       steps:
         - run: echo "Event picked up on a ${{ github.event_name }} event."
         - uses: actions/checkout@v3
