@@ -8,7 +8,6 @@ jobs:
     deploy:
       name: deploy app
       runs-on: ubuntu-latest
-      environment: .aws-config
       steps:
         - run: echo "Event picked up on a ${{ github.event_name }} event."
         - uses: actions/checkout@v3
@@ -23,3 +22,22 @@ jobs:
         - run: sam build --use-container
         - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
         - run: echo "This job's status is ${{ job.status }}."
+
+    # teams-notify:
+    #   name: Notify on teams
+    #   needs: deploy
+    #   runs-on: ubuntu-latest
+    #   steps:
+    #     - uses: actions/checkout@master
+    #     - name: Microsoft Teams Notification
+    #       uses: skitionek/notify-microsoft-teams@master
+    #       with:
+    #         webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+    #         dry_run: False
+    #         message: |
+    #           🚀 *Deployment Notification*
+    #           - Repository: `${{ github.repository }}`
+    #           - Branch: `${{ github.ref_name }}`
+    #           - Actor: `${{ github.actor }}`
+    #           - Status: `${{ needs.deploy.result }}`
+    #           - [View Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
