@@ -20,10 +20,11 @@ jobs:
             aws-region: us-east-1
         - run: echo "AWS access credentials pulled from env."
         - run: sam build --use-container
-        - run: sam deploy \
+        - run: | 
+              sam deploy \
                 --no-confirm-changeset \
                 --no-fail-on-empty-changeset \
-                --config-env dev \
+                --config-env qa \
                 --stack-name "gha-app-qa"
                 --capabilities CAPABILITY_IAM \
 
