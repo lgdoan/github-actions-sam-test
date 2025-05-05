@@ -33,3 +33,25 @@ warm_containers = "EAGER"
 
 [default.local_start_lambda.parameters]
 warm_containers = "EAGER"
+
+[dev]
+[dev.deploy.parameters]
+stack_name="sam-app-dev"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+resolve_s3 = true
+stack_name = "test-gha-sam-app-dev"
+s3_prefix = "test-gha-sam-app-dev"
+region = "us-east-2"
+image_repositories = []
+
+[qa.deploy.parameters]
+stack_name="sam-app-qa"
+stack_name="sam-app-dev"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+resolve_s3 = true
+stack_name = "test-gha-sam-app-qa"
+s3_prefix = "test-gha-sam-app-qa"
+region = "us-east-2"
+image_repositories = []

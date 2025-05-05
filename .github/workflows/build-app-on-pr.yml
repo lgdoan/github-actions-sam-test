@@ -33,3 +33,13 @@ jobs:
 
       - name: Build App with SAM
         run: sam build --use-container
+
+      - name: Deploy Dev App
+        run: sam deploy \
+              --no-confirm-changeset \
+              --no-fail-on-empty-changeset \
+              --config-env dev \
+              --stack-name "gha-app-dev-pr-${{ github.event.pull_request.number }}"
+              --capabilities CAPABILITY_IAM \
+              
+      - run: echo "This job's status is ${{ job.status }}."
