@@ -36,7 +36,6 @@ warm_containers = "EAGER"
 
 [dev]
 [dev.deploy.parameters]
-stack_name="sam-app-dev"
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
@@ -46,8 +45,6 @@ region = "us-east-2"
 image_repositories = []
 
 [qa.deploy.parameters]
-stack_name="sam-app-qa"
-stack_name="sam-app-dev"
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
