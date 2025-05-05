@@ -40,7 +40,6 @@ jobs:
               --no-confirm-changeset \
               --no-fail-on-empty-changeset \
               --config-env dev \
-              --stack-name "gha-app-dev-pr-${{ github.event.pull_request.number }}" \
-              --capabilities CAPABILITY_IAM \
+              --stack-name "gha-app-dev-pr-${{ github.event.pull_request.number }}"
               
       - run: echo "This job's status is ${{ job.status }}."

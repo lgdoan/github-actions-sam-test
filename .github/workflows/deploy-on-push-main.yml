@@ -26,7 +26,6 @@ jobs:
                 --no-fail-on-empty-changeset \
                 --config-env qa \
                 --stack-name "gha-app-qa"
-                --capabilities CAPABILITY_IAM \
 
         - run: echo "This job's status is ${{ job.status }}."
 
